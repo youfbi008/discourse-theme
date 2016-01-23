@@ -31,7 +31,7 @@ after_initialize do
     end
 
     def top_posters
-      user_ids.map { |id| avatar_lookup[id] }.compact.uniq.take(4)
+      user_ids.map { |id| avatar_lookup[id] }.compact.uniq.take(5)
     end
   end
 
