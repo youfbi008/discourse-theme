@@ -1,15 +1,3 @@
-# name: discourse-theme
-# about: sitepoint.com/forum theme
-# authors: Jude Aakjaer, James Hunter, Kelle-Lee Connolly
-
-# When styles are not working or are not updating, try:
-# - stopping server
-# - sitepoint/discourse rm -rf tmp
-# - delete sitepoint/discourse/public/uploads/stylesheet-cache
-# - restart server
-# If styles are still not updating, there is probably a syntax error in the SCSS causing a silent failure and causing the file not being processed.
-# To be 100% sure you can also enable Chrome Dev Tools -> Settings -> General -> Disable cache (while DevTools is open), but note it leads to 30s onload times.
-
 after_initialize do
 
   module SitepointDesign
@@ -38,40 +26,14 @@ after_initialize do
   # SP customisation: add SiteCustomization to add in crawler links
   header = <<-EOS.strip_heredoc.chomp
     <noscript>
-      <a class="header-link" href="https://shop.sitepoint.com" tabindex="2">Shop</a>
-      <a class="header-link" href="http://www.sitepoint.com/versioning" tabindex="3">Versioning</a>
-      <a class="header-link" href="http://www.sitepoint.com/reference" tabindex="4">Reference</a>
-      <a class="header-link" href="http://www.sitepoint.com" tabindex="5">Articles</a>
-      <a class="header-link u-button" target="_blank" href="https://www.sitepoint.com/premium/topics/all?utm_source=sitepoint&utm_medium=link&utm_content=top-nav" tabindex="6">Premium</a>
+      <a class="header-link" href="http://bbs.dmgeek.com/categories" tabindex="2">论坛首页</a>
+      <a class="header-link" href="http://bbs.dmgeek.com/c/vrdiscuss" tabindex="3">讨论区</a>
+      <a class="header-link" href="http://bbs.dmgeek.com/c/vrdevices" tabindex="4">设备区</a>
+      <a class="header-link" href="http://bbs.dmgeek.com/c/resource" tabindex="5">资源区</a>
+      <a class="header-link u-button" target="_blank" href="http://dmgeek.com/" tabindex="6">网站主页</a>
     </noscript>
-
-    <!-- Start Alexa Certify Javascript -->
-    <script type="text/javascript">
-    _atrk_opts = { atrk_acct:"3/2Rk1ao6C526C", domain:"sitepoint.com",dynamic: true};
-    (function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
-    </script>
-    <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=3/2Rk1ao6C526C" style="display:none" height="1" width="1" alt="" /></noscript>
-    <!-- End Alexa Certify Javascript -->
     EOS
 
-  begin
-    if User.exists?
-      sitepoint_site_customization = SiteCustomization.find_or_create_by({
-        name: "SitePoint Crawler links",
-        header: header,
-        mobile_header: header,
-        enabled: true,
-        user_id: User.first.id,
-        head_tag: ''
-      })
-      # cleanup old customizations
-      SiteCustomization.where(name: sitepoint_site_customization.name).
-        where.not(id: sitepoint_site_customization.id).
-        delete_all
-    end
-  rescue ActiveRecord::StatementInvalid
-    # This happens when you run db:migrate on a database that doesn't have any tables yet.
-  end
 end
 
 ## Adding To Discourse
