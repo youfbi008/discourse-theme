@@ -37,7 +37,7 @@ after_initialize do
 end
 
 ## Adding To Discourse
-register_custom_html extraNavItem: "<li id='tags-menu-item'><a href='/tags'>标签查找</a></li><li id='faq-menu-item'><a href='/faq'>FAQ</a></li>"
+register_custom_html extraNavItem: "<li id='faq-menu-item'><a href='/faq'>FAQ</a></li>"
 register_asset "javascripts/pm_button.js.es6", :client_side
 register_asset "stylesheets/common/foundation/variables.scss", :variables # other things need these variables
 
