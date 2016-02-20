@@ -27,10 +27,10 @@ after_initialize do
   header = <<-EOS.strip_heredoc.chomp
     <noscript>
       <a class="header-link" href="http://bbs.dmgeek.com/categories" tabindex="2">论坛首页</a>
-      <a class="header-link" href="http://bbs.dmgeek.com/c/vrdiscuss" tabindex="3">讨论区</a>
-      <a class="header-link" href="http://bbs.dmgeek.com/c/vrdevices" tabindex="4">设备区</a>
-      <a class="header-link" href="http://bbs.dmgeek.com/c/resource" tabindex="5">资源区</a>
-      <a class="header-link u-button" target="_blank" href="http://dmgeek.com/" tabindex="6">网站主页</a>
+      <a class="header-link" href="http://bbs.dmgeek.com/c/vrdiscuss" tabindex="3" title="VR虚拟现实话题讨论">讨论区</a>
+      <a class="header-link" href="http://bbs.dmgeek.com/c/vrdevices" tabindex="4" title="各种VR设备信息及评测">设备区</a>
+      <a class="header-link" href="http://bbs.dmgeek.com/c/resource" tabindex="5" title="视频资源及游戏工具下载">资源区</a>
+      <a class="header-link u-button" target="_blank" href="http://dmgeek.com/" tabindex="6" title="返回到盗梦极客主页">盗梦主页</a>
     </noscript>
     EOS
 
