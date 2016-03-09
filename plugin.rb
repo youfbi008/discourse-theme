@@ -9,11 +9,6 @@ after_initialize do
     Rails.application.config.assets.paths.unshift File.expand_path('../assets', __FILE__)
   end
 
-Rails.application.config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
-Rails.application.config.action_dispatch.default_headers.merge!({'Access-Control-Allow-Origin' => 'http://dmgeek.com'})
-Rails.application.config.action_dispatch.default_headers.merge!({'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS, DELETE'})
-Rails.application.config.action_dispatch.default_headers.merge!({'Access-Control-Allow-Headers' => 'Content-Type, Authorization, X-Requested-With'})
-
   # app/models/topic_posters_summary.rb
   TopicPostersSummary.class_eval do
     def user_ids_with_descriptions
